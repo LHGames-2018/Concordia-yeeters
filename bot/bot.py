@@ -25,10 +25,10 @@ class Bot:
         counterD = 1
         if counterR != 0:
             return create_move_action(Point(1, 0))
-            counterR--
+            counterR -= 1
         elif counterR == 0 and counterD != 0:
             return create_move_action(Point(0, 1))
-            counterD--
+            counterD -= 1
         else:
             return create_collect_action(0, 1)
 
