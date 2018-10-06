@@ -21,14 +21,16 @@ class Bot:
 
         # Write your bot here. Use functions from aiHelper to instantiate your actions.
         # return create_move_action(Point(0, 1))
-        counterL = 4
+        counterR = 11
         counterD = 1
-        if counterL != 0:
-            return create_move_action(Point(-1, 0))
-        elif counterL == 0 and counterD != 0:
+        if counterR != 0:
+            return create_move_action(Point(1, 0))
+            counterR--
+        elif counterR == 0 and counterD != 0:
             return create_move_action(Point(0, 1))
+            counterD--
         else:
-            return create_collect_action(Point(0, 1))
+            return create_collect_action(0, 1)
 
     def after_turn(self):
         """
