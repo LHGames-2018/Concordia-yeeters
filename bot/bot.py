@@ -21,14 +21,17 @@ class Bot:
 
         # Write your bot here. Use functions from aiHelper to instantiate your actions.
         # return create_move_action(Point(0, 1))
-        counterR = 11
-        counterD = 1
-        if counterR != 0:
-            return create_move_action(Point(1, 0))
-            counterR -= 1
-        elif counterR == 0 and counterD != 0:
+        if StorageHelper.read("firstRunDone") != "done":
+            StorageHelper.write("firstRunDone", "done")
+            StorageHelper.write("counterL", 4)
+            StorageHelper.write("counterD", 1)
+
+        if StorageHelper.read("counterL") != 0:
+            return create_move_action(Point(-1, 0))
+            StorageHelper.write("counterL", StorageHelper.read("counterL") - 1)
+        elif StorageHelper.read("counterL") == 0 and StorageHelper.read("counterD") != 0:
             return create_move_action(Point(0, 1))
-            counterD -= 1
+            StorageHelper.write("counterD", StorageHelper.read("counterD") - 1)
         else:
             return create_collect_action(0, 1)
 
