@@ -21,6 +21,12 @@ class Bot:
 
         # Write your bot here. Use functions from aiHelper to instantiate your actions.
         # return create_move_action(Point(0, 1))
+
+        try:
+            StorageHelper.read("firstRunDone")
+        except Exception as e:
+            StorageHelper.write("firstRunDone", "false")
+
         if StorageHelper.read("firstRunDone") != "done":
             StorageHelper.write("firstRunDone", "done")
             StorageHelper.write("counterL", 4)
